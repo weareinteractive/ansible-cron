@@ -1,0 +1,13 @@
+---
+
+- name: Configuring cron
+  template: >
+    src=etc-cron-d-ansible.j2
+    dest=/etc/cron.d/ansible
+    owner=root
+    group=root
+    mode=0644
+  tags:
+    - system
+    - cron
+    - config

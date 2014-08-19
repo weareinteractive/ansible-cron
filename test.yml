@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  roles:
+    - franklinkim.cron
+  vars:
+    crontab_tasks:
+      - '*/5 * * * * www-data touch /tmp/test'
+

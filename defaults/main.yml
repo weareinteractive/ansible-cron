@@ -1,0 +1,14 @@
+---
+# For more information about default variables see:
+# http://www.ansibleworks.com/docs/playbooks_variables.html#id26
+#
+# cron_tasks
+#   - '*/5 * * * *  /bin/sh /absolute/path/to/cron.sh'
+#
+
+# list of cron entries
+cron_tasks: []
+# start on boot
+cron_service_enabled: yes
+# current state: started, stopped
+cron_service_state: started
