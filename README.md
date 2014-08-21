@@ -7,6 +7,7 @@
 > 
 > * installs cron
 > * adds cron tasks
+> * configures service
 
 ## Installation
 
