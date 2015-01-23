@@ -15,5 +15,5 @@
 - name: Intall yum packages (RedHat).
   yum: pkg={{ item }} state=present
   with_items:
-    - cron
+    - crontabs
   when: ansible_os_family == 'RedHat'  
