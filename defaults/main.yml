@@ -8,6 +8,8 @@
 
 # list of cron entries
 cron_tasks: []
+# service name
+cron_service_name: cron
 # start on boot
 cron_service_enabled: yes
 # current state: started, stopped
