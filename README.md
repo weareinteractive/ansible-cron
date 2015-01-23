@@ -7,6 +7,7 @@
 > 
 > * installs cron
 > * adds cron tasks
+> * configures service
 
 ## Installation
 
@@ -39,6 +40,8 @@ Here is a list of all the default variables for this role, which are also availa
 
 # list of cron entries
 cron_tasks: []
+# service name
+cron_service_name: cron
 # start on boot
 cron_service_enabled: yes
 # current state: started, stopped
