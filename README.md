@@ -61,7 +61,7 @@ These are the handlers that are defined in `handlers/main.yml`.
   roles: 
     - franklinkim.cron
   vars:
-    crontab_tasks:
+    cron_tasks:
       - '*/5 * * * * /bin/sh /absolute/path/to/cron.sh'
 ```
 
