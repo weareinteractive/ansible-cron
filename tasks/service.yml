@@ -1,11 +1,8 @@
 ---
 
 - name: Configuring service
-  service: >
-    name={{ cron_service_name }}
-    state={{ cron_service_state }}
-    enabled={{ cron_service_enabled }}
-  tags:
-    - system
-    - cron
-    - service
+  service:
+    name: "{{ cron_service_name }}"
+    state: "{{ cron_service_state }}"
+    enabled: "{{ cron_service_enabled }}"
+

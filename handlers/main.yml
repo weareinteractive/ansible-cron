@@ -4,4 +4,7 @@
 #
 
 - name: restart cron
-  service: name=cron state=restarted
+  service:
+    name: "{{ cron_service_name }}"
+    state: restarted
+  when: cron_service_state != 'stopped'

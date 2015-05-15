@@ -1,13 +1,16 @@
 ---
 
-- name: Configuring cron
-  template: >
-    src=etc-cron-d-ansible.j2
-    dest=/etc/cron.d/ansible
-    owner=root
-    group=root
-    mode=0644
-  tags:
-    - system
-    - cron
-    - config
+- name: Configuring cron tasks
+  cron:
+    cron_file: "{{ item.cron_file | default(omit) }}"
+    day: "{{ item.day | default(omit) }}"
+    hour: "{{ item.hour | default(omit) }}"
+    job: "{{ item.job | default(omit) }}"
+    minute: "{{ item.minute | default(omit) }}"
+    month: "{{ item.month | default(omit) }}"
+    name: "{{ item.name | default(item) }}"
+    special_time: "{{ item.special_time | default(omit) }}"
+    state: "{{ item.state | default(omit) }}"
+    user: "{{ item.user | default(omit) }}"
+    weekday: "{{ item.weekday | default(omit) }}"
+  with_items: cron_tasks
