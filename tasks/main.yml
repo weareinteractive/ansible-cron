@@ -1,5 +1,12 @@
 ---
 
+- include: vars.yml
+  tags:
+    - system
+    - cron
+    - vars
+    - cron-vars
+
 - include: install.yml
   tags:
     - system
