@@ -1,10 +1,12 @@
 # Ansible Cron Role
 
-[![Build Status](https://travis-ci.org/weareinteractive/ansible-cron.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-cron)
-[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-cron.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-cron)
+[![Build Status](https://img.shields.io/travis/weareinteractive/ansible-cron.svg)](https://travis-ci.org/weareinteractive/ansible-cron)
+[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.supervisor-blue.svg)](https://galaxy.ansible.com/list#/roles/1408)
+[![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-cron.svg)](https://github.com/weareinteractive/ansible-cron)
+[![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-cron.svg)](https://github.com/weareinteractive/ansible-cron)
 
-> `cron` is an [ansible](http://www.ansible.com) role which: 
-> 
+> `cron` is an [ansible](http://www.ansible.com) role which:
+>
 > * installs cron
 > * adds cron tasks
 > * configures service
@@ -17,16 +19,16 @@ Using `ansible-galaxy`:
 $ ansible-galaxy install franklinkim.cron
 ```
 
-Using `arm` ([Ansible Role Manager](https://github.com/mirskytech/ansible-role-manager/)):
+Using `requirements.yml`:
 
 ```
-$ arm install franklinkim.cron
+- src: franklinkim.apache2
 ```
 
 Using `git`:
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-cron.git
+$ git clone https://github.com/weareinteractive/ansible-cron.git franklinkim.cron
 ```
 
 ## Variables
@@ -35,13 +37,21 @@ Here is a list of all the default variables for this role, which are also availa
 
 ```
 # cron_tasks
-#   - '*/5 * * * *  /bin/sh /absolute/path/to/cron.sh'
+#   - name: ...
+#     cron_file: ...
+#     day: ...
+#     hour: ...
+#     job: ...
+#     minute: ...
+#     month: ...
+#     special_time: ...
+#     state: ...
+#     user: ...
+#     weekday: ...
 #
 
-# list of cron entries
+# list of cron entries (@see http://docs.ansible.com/cron_module.html)
 cron_tasks: []
-# service name
-cron_service_name: cron
 # start on boot
 cron_service_enabled: yes
 # current state: started, stopped
@@ -52,17 +62,20 @@ cron_service_state: started
 
 These are the handlers that are defined in `handlers/main.yml`.
 
-* `restart cron` 
+* `restart cron`
 
 ## Example playbook
 
 ```
-- host: all
-  roles: 
+- hosts: all
+  sudo: yes
+  roles:
     - franklinkim.cron
   vars:
     cron_tasks:
-      - '*/5 * * * * /bin/sh /absolute/path/to/cron.sh'
+      - name: checking dirs
+        special_time: daily
+        job: "ls -alh > /dev/null"
 ```
 
 ## Testing

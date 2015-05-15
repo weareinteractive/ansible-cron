@@ -1,0 +1,4 @@
+---
+
+- name: Installing package
+  action: "{{ ansible_pkg_mgr }} pkg={{ cron_package }} state=present"

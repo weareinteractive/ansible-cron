@@ -1,9 +1,11 @@
 ---
 
 - hosts: all
+  sudo: yes
   roles:
     - franklinkim.cron
   vars:
     cron_tasks:
-      - '*/5 * * * * www-data touch /tmp/test'
-
+      - name: checking dirs
+        special_time: daily
+        job: "ls -alh > /dev/null"
