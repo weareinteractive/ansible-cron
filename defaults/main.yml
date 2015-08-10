@@ -2,7 +2,8 @@
 # For more information about default variables see:
 # http://www.ansibleworks.com/docs/playbooks_variables.html#id26
 #
-# cron_tasks
+# list of cron entries (@see http://docs.ansible.com/cron_module.html)
+# cron_tasks:
 #   - name: ...
 #     cron_file: ...
 #     day: ...
@@ -16,9 +17,17 @@
 #     weekday: ...
 #
 
-# list of cron entries (@see http://docs.ansible.com/cron_module.html)
+# "Global" cron tasks
 cron_tasks: []
+
+# "Host group" cron tasks
+cron_group_tasks: []
+
+# "Host" cron tasks
+cron_host_tasks: []
+
 # start on boot
 cron_service_enabled: yes
+
 # current state: started, stopped
 cron_service_state: started
