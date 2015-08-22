@@ -1,7 +1,7 @@
 # Ansible Cron Role
 
 [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-cron.svg)](https://travis-ci.org/weareinteractive/ansible-cron)
-[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.supervisor-blue.svg)](https://galaxy.ansible.com/list#/roles/1408)
+[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.cron-blue.svg)](https://galaxy.ansible.com/list#/roles/1408)
 [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-cron.svg)](https://github.com/weareinteractive/ansible-cron)
 [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-cron.svg)](https://github.com/weareinteractive/ansible-cron)
 
@@ -22,7 +22,7 @@ $ ansible-galaxy install franklinkim.cron
 Using `requirements.yml`:
 
 ```
-- src: franklinkim.apache2
+- src: franklinkim.cron
 ```
 
 Using `git`:
