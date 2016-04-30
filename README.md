@@ -56,6 +56,21 @@ cron_tasks: []
 cron_service_enabled: yes
 # current state: started, stopped
 cron_service_state: started
+
+
+# .. envvar:: cron_vars
+#
+# List of ``cron`` variables.
+# Refer to the `cronvar Ansible module documentation <https://docs.ansible.com/ansible/cronvar_module.html>`_ for details.
+#
+# Example::
+#
+#    cron_vars:
+#      - name: 'PATH'
+#        value: '/usr/bin:/bin:/usr/local/bin'
+#        user: 'root'
+#
+cron_vars: []
 ```
 
 ## Handlers
@@ -87,7 +102,7 @@ $ vagrant up
 ```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
+In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
