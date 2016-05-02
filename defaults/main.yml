@@ -1,8 +1,5 @@
 ---
-# For more information about default variables see:
-# http://www.ansibleworks.com/docs/playbooks_variables.html#id26
-#
-# cron_tasks
+# cron_tasks:
 #   - name: ...
 #     cron_file: ...
 #     day: ...
@@ -22,3 +19,12 @@ cron_tasks: []
 cron_service_enabled: yes
 # current state: started, stopped
 cron_service_state: started
+#
+# refer to the `cronvar Ansible module documentation <https://docs.ansible.com/ansible/cronvar_module.html>`_ for details.
+#
+# cron_vars:
+#   - name: 'PATH'
+#     value: '/usr/bin:/bin:/usr/local/bin'
+#     user: 'root'
+#
+cron_vars: []
