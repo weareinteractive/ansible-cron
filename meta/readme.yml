@@ -1,0 +1,14 @@
+---
+
+galaxy_name: franklinkim.cron
+github_user: weareinteractive
+github_name: ansible-cron
+badges: |
+  [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-cron.svg)](https://travis-ci.org/weareinteractive/ansible-cron)
+  [![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.cron-blue.svg)](https://galaxy.ansible.com/franklinkim/cron)
+  [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-cron.svg)](https://github.com/weareinteractive/ansible-cron)
+  [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-cron.svg)](https://github.com/weareinteractive/ansible-cron)
+description: |
+  > * installs cron
+  > * adds cron tasks
+  > * configures service
