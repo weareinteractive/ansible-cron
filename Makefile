@@ -1,5 +1,5 @@
 PWD=$(shell pwd)
-ROLE_NAME=weareinteractive.cron
+ROLE_NAME=franklinkim.cron
 ROLE_PATH=/etc/ansible/roles/$(ROLE_NAME)
 TEST_VERSION=ansible --version
 TEST_SYNTAX=ansible-playbook -vv -i 'localhost,' -c local $(ROLE_PATH)/tests/main.yml --syntax-check
