@@ -2,15 +2,14 @@
 # vi: set ft=ruby :
 
 $script = <<-SCRIPT
-case "$SUDO_USER" in
-  ubuntu )
-    apt-get update
-    apt-get install -y python
-    ;;
-  * )
-    echo "SUDO_USER: $SUDO_USER"
-  ;;
-esac
+if [ -x "$(command -v apt-get)" ]; then
+  apt-get update
+  apt-get install -y python
+elif [ -x "$(command -v yum)" ]; then
+  // yum install ...
+else
+  // printenv
+fi
 echo "done"
 SCRIPT
 
@@ -24,6 +23,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.define 'xenial' do |instance|
     instance.vm.box = 'ubuntu/xenial64'
+  end
+
+  config.vm.define 'centos7' do |instance|
+    instance.vm.box = 'centos/7'
   end
 
   # install dependencies

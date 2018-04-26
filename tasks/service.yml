@@ -4,7 +4,7 @@
   systemd:
     name: "{{ cron_service_name }}"
     masked: no
-  when: ansible_service_mgr == "systemctl"
+  when: ansible_service_mgr == "systemd"
 
 - name: Configuring service
   service:

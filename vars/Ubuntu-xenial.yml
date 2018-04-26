@@ -3,4 +3,4 @@
 # package name
 cron_package: systemd-cron
 # service name
-cron_service_name: cron.service
+cron_service_name: cron
