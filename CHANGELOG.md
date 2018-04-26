@@ -1,3 +1,20 @@
+<a name="1.4.0"></a>
+## 1.4.0 (2018-04-26)
+
+
+#### Features
+
+*   split var files to support xenial package name ([7a4cd240](https://github.com/weareinteractive/ansible-cron/commit/7a4cd24038df45c2819962d751690f223d040ba5))
+*   update tested distributions ([e2e9f6e7](https://github.com/weareinteractive/ansible-cron/commit/e2e9f6e7dac35212e9b8f7456af366f76496a945))
+*   update depricated include module ([a48e6639](https://github.com/weareinteractive/ansible-cron/commit/a48e663966c3c1636e3a08f54a189720b7618e79))
+*   remove unused template ([17fa06d9](https://github.com/weareinteractive/ansible-cron/commit/17fa06d986b9fab8f503cfcb0d3214523d1a165e))
+
+#### Bug Fixes
+
+*   unmask service like on ubuntu xenial ([99f980fc](https://github.com/weareinteractive/ansible-cron/commit/99f980fc2e7ce190d4078a42d1669903d914fcf1))
+
+
+
 <a name="1.3.0"></a>
 ## 1.3.0 (2016-05-02)
 
