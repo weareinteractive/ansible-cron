@@ -13,7 +13,7 @@
     state: "{{ item.state | default(omit) }}"
     user: "{{ item.user | default(omit) }}"
     weekday: "{{ item.weekday | default(omit) }}"
-  with_items: '{{ cron_tasks }}'
+  with_items: "{{ cron_tasks }}"
 
 - name: Configuring cron variables
   cronvar:
@@ -25,4 +25,4 @@
     insertafter: "{{ item.insertafter | default(omit) }}"
     insertbefore: "{{ item.insertbefore | default(omit) }}"
     user: "{{ item.user | default(omit) }}"
-  with_items: '{{ cron_vars }}'
+  with_items: "{{ cron_vars }}"
