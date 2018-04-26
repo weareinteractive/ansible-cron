@@ -1,5 +1,11 @@
 ---
 
+- name: Ensuring unmasked service
+  systemd:
+    name: "{{ cron_service_name }}"
+    masked: no
+  when: ansible_service_mgr == "systemctl"
+
 - name: Configuring service
   service:
     name: "{{ cron_service_name }}"
