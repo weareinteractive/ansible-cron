@@ -132,6 +132,7 @@ galaxy_info:
   #    - vivid
   #    - wily
       - xenial
+      - bionic
   - name: Debian
     versions:
   #    - all
