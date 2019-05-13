@@ -1,34 +1,38 @@
-# Ansible franklinkim.cron role
+# Ansible weareinteractive.cron role
 
 [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-cron.svg)](https://travis-ci.org/weareinteractive/ansible-cron)
-[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.cron-blue.svg)](https://galaxy.ansible.com/franklinkim/cron)
+[![Galaxy](http://img.shields.io/badge/galaxy-weareinteractive.cron-blue.svg)](https://galaxy.ansible.com/weareinteractive/cron)
 [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-cron.svg)](https://github.com/weareinteractive/ansible-cron)
 [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-cron.svg)](https://github.com/weareinteractive/ansible-cron)
 
-> `franklinkim.cron` is an [Ansible](http://www.ansible.com) role which:
+> `weareinteractive.cron` is an [Ansible](http://www.ansible.com) role which:
 >
 > * installs cron
 > * adds cron tasks
 > * configures service
+
+**Note:**
+
+> Since Ansible Galaxy supports [organization](https://www.ansible.com/blog/ansible-galaxy-2-release) now, this role has moved from `franklinkim.cron` to `weareinteractive.cron`!
 
 ## Installation
 
 Using `ansible-galaxy`:
 
 ```shell
-$ ansible-galaxy install franklinkim.cron
+$ ansible-galaxy install weareinteractive.cron
 ```
 
 Using `requirements.yml`:
 
 ```yaml
-- src: franklinkim.cron
+- src: weareinteractive.cron
 ```
 
 Using `git`:
 
 ```shell
-$ git clone https://github.com/weareinteractive/ansible-cron.git franklinkim.cron
+$ git clone https://github.com/weareinteractive/ansible-cron.git weareinteractive.cron
 ```
 
 ## Dependencies
@@ -100,8 +104,9 @@ This is an example playbook:
 ---
 
 - hosts: all
+  become: yes
   roles:
-    - franklinkim.cron
+    - weareinteractive.cron
   vars:
     cron_tasks:
       - name: checking dirs
