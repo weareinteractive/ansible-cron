@@ -5,7 +5,7 @@ services:
   - docker
 env:
   global:
-    - role: franklinkim.cron
+    - role: weareinteractive.cron
   matrix:
     # TODO: ansible currently detects the system mgr as 'upstart'
     #- distribution: Ubuntu
