@@ -17,6 +17,10 @@ Vagrant.configure("2") do |config|
   config.vbguest.no_remote = true
   config.vbguest.auto_update = false
 
+  config.vm.define 'bionic' do |instance|
+    instance.vm.box = 'ubuntu/bionic64'
+  end
+
   config.vm.define 'xenial' do |instance|
     instance.vm.box = 'ubuntu/xenial64'
   end

@@ -1,6 +1,6 @@
 ---
 
 # package name
-cron_package: systemd-cron
+cron_package: cron
 # service name
 cron_service_name: cron
