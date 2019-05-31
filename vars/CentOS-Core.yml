@@ -1,6 +1,0 @@
----
-
-# package name
-cron_package: crontabs
-# service name
-cron_service_name: crond
