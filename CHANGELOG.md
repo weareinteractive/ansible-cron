@@ -1,3 +1,13 @@
+<a name="1.6.0"></a>
+## 1.6.0 (2019-06-17)
+
+
+#### Features
+
+*   improve distribution handling ([6c35a5c1](https://github.com/weareinteractive/ansible-cron/commit/6c35a5c1a67f98d8aded0a060c123b05f2525bac))
+
+
+
 <a name="1.5.0"></a>
 ## 1.5.0 (2019-05-13)
 
