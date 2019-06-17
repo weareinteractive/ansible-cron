@@ -1,4 +1,14 @@
 ---
 
-- name: Including variables
-  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+- name: Set variables for CentOS
+  set_fact:
+    cron_package: "{{ cron_package | default('crontabs') }}"
+    cron_service_name: "{{ cron_service_name | default('crond') }}"
+  when: ansible_os_family == "RedHat"
+
+- name: Set variables for Debian/Ubuntu
+  set_fact:
+    cron_package: "{{ cron_package | default('cron') }}"
+    cron_service_name: "{{ cron_service_name | default('cron') }}"
+  when:
+    - ansible_os_family == "Debian"

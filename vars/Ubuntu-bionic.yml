@@ -1,6 +1,0 @@
----
-
-# package name
-cron_package: cron
-# service name
-cron_service_name: cron
