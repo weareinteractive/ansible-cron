@@ -14,12 +14,13 @@
     - install
     - cron-install
 
-- import_tasks: config.yml
+- include_tasks: config.yml
   tags:
     - system
     - cron
     - config
     - cron-config
+  with_items: "{{ cron }}"
 
 - import_tasks: service.yml
   tags:

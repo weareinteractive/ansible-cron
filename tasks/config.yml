@@ -1,28 +1,89 @@
 ---
 
+- name: Create temporary file name
+  tempfile:
+    state: file
+    prefix: "ansible_{{ ansible_date_time.iso8601_basic_short }}"
+    suffix: "cron_temp_{{ item.cron_file | basename }}"
+  register: tempfile
+  changed_when: false
+  when:
+    - item.cron_file is defined
+    - item.exclusive | default(false)
+
+- name: Create temporary backup file name
+  tempfile:
+    state: file
+    prefix: "ansible_{{ ansible_date_time.iso8601_basic_short }}"
+    suffix: "cron_backup_{{ item.cron_file | basename }}"
+  register: backupfile
+  changed_when: false
+  when:
+    - item.cron_file is defined
+    - item.backup | default(false)
+
+- name: Backup cron file
+  copy:
+    remote_src: yes
+    src: "{{ item.cron_file }}"
+    dest: "{{ backupfile.path }}"
+    owner: "{{ item.user | default(omit) }}"
+    group: "{{ item.group | default(omit) }}"
+    mode: "{{ item.mode | default(omit) }}"
+  when:
+    - backupfile.path is defined
+
 - name: Configuring cron tasks
   cron:
-    cron_file: "{{ item.cron_file | default(omit) }}"
-    day: "{{ item.day | default(omit) }}"
-    hour: "{{ item.hour | default(omit) }}"
-    job: "{{ item.job | default(omit) }}"
-    minute: "{{ item.minute | default(omit) }}"
-    month: "{{ item.month | default(omit) }}"
-    name: "{{ item.name | default(item) }}"
-    special_time: "{{ item.special_time | default(omit) }}"
-    state: "{{ item.state | default(omit) }}"
+    cron_file: "{{ tempfile.path | default(item.cron_file | default(omit)) }}"
     user: "{{ item.user | default(omit) }}"
-    weekday: "{{ item.weekday | default(omit) }}"
-  with_items: "{{ cron_tasks }}"
+    backup: "{{ task.backup | default(omit) }}"
+    day: "{{ task.day | default(omit) }}"
+    hour: "{{ task.hour | default(omit) }}"
+    job: "{{ task.job | default(omit) }}"
+    minute: "{{ task.minute | default(omit) }}"
+    month: "{{ task.month | default(omit) }}"
+    name: "{{ task.name | default(item) }}"
+    special_time: "{{ task.special_time | default(omit) }}"
+    state: "{{ task.state | default(omit) }}"
+    weekday: "{{ task.weekday | default(omit) }}"
+  when: item.tasks is defined
+  register: result
+  changed_when: tempfile.path is defined | ternary(false, result.changed)
+  with_items: "{{ item.tasks }}"
+  loop_control:
+    loop_var: task
 
 - name: Configuring cron variables
   cronvar:
-    name: "{{ item.name | default(omit) }}"
-    value: "{{ item.value | default(omit) }}"
-    state: "{{ item.state | default(omit) }}"
-    cron_file: "{{ item.cron_file | default(omit) }}"
-    backup: "{{ item.backup | default(omit) }}"
-    insertafter: "{{ item.insertafter | default(omit) }}"
-    insertbefore: "{{ item.insertbefore | default(omit) }}"
+    cron_file: "{{ tempfile.path | default(item.cron_file | default(omit)) }}"
     user: "{{ item.user | default(omit) }}"
-  with_items: "{{ cron_vars }}"
+    backup: "{{ var.backup | default(omit) }}"
+    name: "{{ var.name | default(omit) }}"
+    value: "{{ var.value | default(omit) }}"
+    state: "{{ var.state | default(omit) }}"
+    insertafter: "{{ var.insertafter | default(omit) }}"
+    insertbefore: "{{ var.insertbefore | default(omit) }}"
+  when: item.vars is defined
+  register: result
+  changed_when: tempfile.path is defined | ternary(false, result.changed)
+  with_items: "{{ item.vars }}"
+  loop_control:
+    loop_var: var
+
+- name: "Copy temporary file to {{ item.cron_file }}" 
+  copy:
+    remote_src: yes
+    src: "{{ tempfile.path }}"
+    dest: "{{ item.cron_file }}"
+    owner: "{{ item.user | default(omit) }}"
+    group: "{{ item.group | default(omit) }}"
+    mode: "{{ item.mode | default(omit) }}"
+  when: tempfile.path is defined
+
+- name: Remove the temporary file
+  file:
+    path: "{{ tempfile.path }}"
+    state: absent
+  changed_when: false
+  when: tempfile.path is defined
