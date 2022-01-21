@@ -1,0 +1,12 @@
+---
+- name: add python deadsnakes repository
+  become: true
+  apt_repository:
+    repo: ppa:deadsnakes/ppa
+
+- name: install python3
+  become: true
+  apt:
+    name: python3.8
+    state: latest
+    update_cache: yes
