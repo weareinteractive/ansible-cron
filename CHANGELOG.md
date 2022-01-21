@@ -1,3 +1,29 @@
+<a name="1.6.0"></a>
+## 1.6.0 (2019-06-17)
+
+
+#### Features
+
+*   improve distribution handling ([6c35a5c1](https://github.com/weareinteractive/ansible-cron/commit/6c35a5c1a67f98d8aded0a060c123b05f2525bac))
+
+
+
+<a name="1.5.0"></a>
+## 1.5.0 (2019-05-13)
+
+
+#### Features
+
+*   rename role ([5f35dd45](https://github.com/weareinteractive/ansible-cron/commit/5f35dd458b4e0ec12247b1880e5a4ca424ff53a1))
+
+
+
+<a name="1.4.2"></a>
+### 1.4.2 (2019-05-13)
+
+
+
+
 <a name="1.4.1"></a>
 ### 1.4.1 (2018-06-29)
 

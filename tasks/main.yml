@@ -14,6 +14,13 @@
     - install
     - cron-install
 
+- import_tasks: python.yml
+  tags:
+    - system
+    - python
+    - install
+    - python-install
+
 - import_tasks: config.yml
   tags:
     - system
